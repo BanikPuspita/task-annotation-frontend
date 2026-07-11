@@ -1,3 +1,4 @@
+
 import DateSelector from "../components/DateSelector";
 import { useEffect, useState } from "react";
 import { DragDropContext, type DropResult } from "@hello-pangea/dnd";
@@ -5,11 +6,15 @@ import { getTasks, deleteTask, updateTask } from "../api/taskApi";
 import type { Task } from "../types/task";
 import KanbanColumn from "../components/KanbanColumn";
 import TaskModal from "../components/TaskModal";
+import { toast } from "sonner";
+import ConfirmDialog from "../components/ConfirmDialog";
+import { Plus, Search } from "lucide-react";
 
 function Tasks() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
+  const [deleteTaskId, setDeleteTaskId] = useState<number | null>(null);
   const [search, setSearch] = useState("");
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0],
@@ -28,17 +33,25 @@ function Tasks() {
     loadTasks();
   }, [selectedDate]);
 
-  const handleDelete = async (id: number) => {
-    if (!window.confirm("Are you sure you want to delete this task?")) {
-      return;
-    }
+  const handleDelete = (id: number) => {
+    setDeleteTaskId(id);
+  };
+
+  const confirmDelete = async () => {
+    if (deleteTaskId === null) return;
 
     try {
-      await deleteTask(id);
+      await deleteTask(deleteTaskId);
+
+      toast.success("Task deleted successfully.");
+
       loadTasks();
     } catch (error) {
       console.error(error);
-      alert("Failed to delete task.");
+
+      toast.error("Failed to delete task.");
+    } finally {
+      setDeleteTaskId(null);
     }
   };
 
@@ -80,23 +93,35 @@ function Tasks() {
       // Restore original data if API update fails
       loadTasks();
 
-      alert("Failed to update task.");
+      toast.error("Failed to update task.");
     }
   };
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Task Management</h1>
+    <div className="font-['Inter'] pb-24 sm:pb-24 md:pb-8 lg:pb-0">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0 mb-4 sm:mb-6">
+        <div>
+          <span className="font-['JetBrains_Mono'] text-[10px] sm:text-xs uppercase tracking-wider text-[#5B5FEF] font-semibold block mb-1 sm:mb-1.5">
+            Task Management
+          </span>
+          <h1 className="font-['Space_Grotesk'] text-2xl sm:text-[27px] font-bold text-[#12142B] tracking-tight">
+            Task Management
+          </h1>
+        </div>
 
         <button
           onClick={() => {
             setEditingTask(null);
             setShowModal(true);
           }}
-          className="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700"
+          className="text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-[11px] font-['Space_Grotesk'] font-semibold text-sm flex items-center justify-center gap-2 transition w-full sm:w-auto"
+          style={{
+            background: "linear-gradient(135deg, #5B5FEF, #4245C7)",
+            boxShadow: "0 10px 20px -8px rgba(91,95,239,0.55)",
+          }}
         >
-          + New Task
+          <Plus size={15} strokeWidth={2.5} />
+          New Task
         </button>
       </div>
 
@@ -105,18 +130,22 @@ function Tasks() {
         onDateChange={setSelectedDate}
       />
 
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6 relative">
+        <Search
+          size={16}
+          className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-[#6B7089]"
+        />
         <input
           type="text"
           placeholder="Search tasks..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full border rounded-lg p-3"
+          className="w-full border border-[#E7E8F2] rounded-xl pl-9 sm:pl-11 pr-3 sm:pr-4 py-2.5 sm:py-3 text-[13px] sm:text-[14px] outline-none transition focus:border-[#5B5FEF] focus:ring-4 focus:ring-[#EEF0FE] bg-white"
         />
       </div>
 
       <DragDropContext onDragEnd={handleDragEnd}>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
           <KanbanColumn
             title="To Do"
             status="TODO"
@@ -175,6 +204,16 @@ function Tasks() {
           onSuccess={loadTasks}
         />
       )}
+
+      <ConfirmDialog
+        open={deleteTaskId !== null}
+        title="Delete Task"
+        message="Are you sure you want to delete this task? This action cannot be undone."
+        confirmText="Delete"
+        cancelText="Cancel"
+        onConfirm={confirmDelete}
+        onCancel={() => setDeleteTaskId(null)}
+      />
     </div>
   );
 }
