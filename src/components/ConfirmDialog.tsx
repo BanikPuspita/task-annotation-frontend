@@ -1,23 +1,24 @@
-/**
- * Font-link requirement (add once to index.html):
- * <link rel="preconnect" href="https://fonts.googleapis.com">
- * <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
- *
- * No logic changed: same Props interface, same `if (!open) return null` guard,
- * same onCancel/onConfirm wiring.
- */
-
 import { AlertTriangle } from "lucide-react";
 
 interface Props {
   open: boolean;
   title: string;
   message: string;
+  confirmText?: string;
+  cancelText?: string;
   onCancel: () => void;
   onConfirm: () => void;
 }
 
-function ConfirmDialog({ open, title, message, onCancel, onConfirm }: Props) {
+function ConfirmDialog({
+  open,
+  title,
+  message,
+  confirmText = "Delete",
+  cancelText = "Cancel",
+  onCancel,
+  onConfirm,
+}: Props) {
   if (!open) return null;
 
   return (
@@ -40,14 +41,14 @@ function ConfirmDialog({ open, title, message, onCancel, onConfirm }: Props) {
             onClick={onCancel}
             className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-[10px] border-[1.5px] border-[#E7E8F2] text-[#12142B] font-semibold text-[13px] hover:bg-[#F6F7FB] transition w-full sm:w-auto"
           >
-            Cancel
+            {cancelText}
           </button>
 
           <button
             onClick={onConfirm}
             className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-[10px] bg-[#FF6B6B] hover:bg-[#E14545] text-white font-semibold text-[13px] transition w-full sm:w-auto"
           >
-            Delete
+            {confirmText}
           </button>
         </div>
       </div>

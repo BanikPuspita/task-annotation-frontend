@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://task-annotation-backend.onrender.com/api/",
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
 // Add access token to every request
@@ -37,7 +37,7 @@ api.interceptors.response.use(
 
       try {
         const response = await axios.post(
-          "https://task-annotation-backend.onrender.com/api/token/refresh/",
+  `${import.meta.env.VITE_API_URL}/token/refresh/`,
           {
             refresh,
           }

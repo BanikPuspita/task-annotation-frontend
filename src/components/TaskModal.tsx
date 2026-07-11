@@ -12,15 +12,23 @@ interface Props {
 }
 
 function TaskModal({ editingTask, selectedDate, onClose, onSuccess }: Props) {
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    priority: "MEDIUM",
-    status: "TODO",
-    due_date: "",
-    task_date: selectedDate,
-    tags: "",
-  });
+  const [formData, setFormData] = useState<{
+  title: string;
+  description: string;
+  priority: Task["priority"];
+  status: Task["status"];
+  due_date: string;
+  task_date: string;
+  tags: string;
+}>({
+  title: "",
+  description: "",
+  priority: "MEDIUM",
+  status: "TODO",
+  due_date: "",
+  task_date: selectedDate,
+  tags: "",
+});
 
   useEffect(() => {
     if (editingTask) {

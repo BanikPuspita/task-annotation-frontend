@@ -16,8 +16,6 @@ import {
   Image,
   LogOut,
   User,
-  Menu,
-  X,
   ChevronUp,
 } from "lucide-react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";

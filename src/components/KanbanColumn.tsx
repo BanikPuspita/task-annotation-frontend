@@ -1,16 +1,3 @@
-/**
- * Font-link requirement (add once to index.html):
- * <link rel="preconnect" href="https://fonts.googleapis.com">
- * <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
- *
- * No logic changed: same Props interface, same droppableId derivation
- * (title -> TODO/IN_PROGRESS/DONE), same Droppable/Draggable structure,
- * same provided.placeholder, same isDraggingOver / isDragging states.
- * Only headerColor() now returns a status object (border/dot) instead of a
- * solid background class, to match the mockup's white-header +
- * colored-border-and-dot look instead of a solid colored block.
- */
-
 import { Droppable, Draggable } from "@hello-pangea/dnd";
 
 import type { Task } from "../types/task";

@@ -85,7 +85,7 @@ function Tasks() {
 
     try {
       await updateTask(movedTask.id, {
-        status: destination.droppableId,
+        status: destination.droppableId as Task["status"],
       });
     } catch (error) {
       console.error(error);
@@ -148,7 +148,6 @@ function Tasks() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
           <KanbanColumn
             title="To Do"
-            status="TODO"
             tasks={tasks.filter(
               (t) =>
                 t.status === "TODO" &&
@@ -163,7 +162,6 @@ function Tasks() {
 
           <KanbanColumn
             title="In Progress"
-            status="IN_PROGRESS"
             tasks={tasks.filter(
               (t) =>
                 t.status === "IN_PROGRESS" &&
@@ -178,7 +176,6 @@ function Tasks() {
 
           <KanbanColumn
             title="Done"
-            status="DONE"
             tasks={tasks.filter(
               (t) =>
                 t.status === "DONE" &&
