@@ -288,7 +288,7 @@ function AnnotationCanvas({ imageUrl, imageId }: Props) {
             onClick={resetPolygon}
             className="bg-[#FFEDED] hover:bg-[#FFDCDC] text-[#E14545] px-3 sm:px-4 py-2 sm:py-2.5 rounded-[10px] sm:rounded-[11px] text-[12px] sm:text-[13px] font-['Space_Grotesk'] font-semibold flex items-center gap-1.5 sm:gap-2 transition flex-1 sm:flex-none justify-center"
           >
-            <Eraser size={13} sm:size={14} />
+            <Eraser size={13}/>
             Clear Polygon
           </button>
 
@@ -300,7 +300,7 @@ function AnnotationCanvas({ imageUrl, imageId }: Props) {
               boxShadow: "0 8px 16px -6px rgba(31,200,169,0.5)",
             }}
           >
-            <Save size={13} sm:size={14} />
+            <Save size={13}/>
             Save Annotation
           </button>
 
@@ -308,7 +308,7 @@ function AnnotationCanvas({ imageUrl, imageId }: Props) {
             onClick={removeAnnotation}
             className="bg-[#12142B] hover:bg-black text-white px-3 sm:px-4 py-2 sm:py-2.5 rounded-[10px] sm:rounded-[11px] text-[12px] sm:text-[13px] font-['Space_Grotesk'] font-semibold flex items-center gap-1.5 sm:gap-2 transition flex-1 sm:flex-none justify-center"
           >
-            <Trash2 size={13} sm:size={14} />
+            <Trash2 size={13}/>
             Delete Selected
           </button>
         </div>

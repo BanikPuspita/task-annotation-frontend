@@ -98,7 +98,7 @@ function Annotation() {
             }`}
           >
             <Upload
-              size={18} sm:size={22}
+              size={18} 
               className={uploading ? "text-[#B9BBD4]" : "text-[#5B5FEF]"}
             />
 
@@ -188,7 +188,7 @@ function Annotation() {
           ) : (
             <div className="min-h-[400px] sm:min-h-[500px] md:min-h-[700px] flex flex-col justify-center items-center text-center px-4 sm:px-6">
               <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-[#F6F7FB] flex items-center justify-center">
-                <ImageIcon size={24} sm:size={30} className="text-[#B9BBD4]" />
+                <ImageIcon size={24} className="text-[#B9BBD4]" />
               </div>
 
               <h2 className="font-['Space_Grotesk'] text-lg sm:text-xl font-bold text-[#12142B] mt-4 sm:mt-5">

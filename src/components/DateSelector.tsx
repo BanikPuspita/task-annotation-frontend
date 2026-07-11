@@ -22,7 +22,7 @@ function DateSelector({ selectedDate, onDateChange }: Props) {
 
       <div className="relative inline-flex items-center w-full sm:w-auto">
         <Calendar
-          size={14} sm:size={15}
+          size={14}
           className="absolute left-3 sm:left-4 pointer-events-none text-[#6B7089]"
         />
         <input

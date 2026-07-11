@@ -24,7 +24,7 @@ function ConfirmDialog({ open, title, message, onCancel, onConfirm }: Props) {
     <div className="fixed inset-0 bg-[#0B0E1F]/55 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4 font-['Inter']">
       <div className="bg-white rounded-[16px] sm:rounded-[20px] shadow-[0_30px_60px_-12px_rgba(11,14,31,0.4)] w-full max-w-[420px] p-5 sm:p-8">
         <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-[10px] sm:rounded-[12px] bg-[#FFEDED] text-[#E14545] flex items-center justify-center mb-3 sm:mb-4">
-          <AlertTriangle size={18} sm:size={20} />
+          <AlertTriangle size={18}/>
         </div>
 
         <h2 className="font-['Space_Grotesk'] text-lg sm:text-xl font-bold text-[#12142B]">

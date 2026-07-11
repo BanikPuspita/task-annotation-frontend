@@ -194,7 +194,7 @@ function Dashboard() {
             >
               <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 flex-1">
                 <div className="w-[32px] h-[32px] sm:w-[38px] sm:h-[38px] rounded-[8px] sm:rounded-[10px] bg-[#EEF0FE] text-[#5B5FEF] flex items-center justify-center shrink-0">
-                  <ClipboardList size={15} sm:size={17} />
+                  <ClipboardList size={15} />
                 </div>
                 <div className="min-w-0 flex-1">
                   <h3 className="font-semibold text-[13px] sm:text-[14px] text-[#12142B] truncate">
@@ -206,7 +206,7 @@ function Dashboard() {
                 </div>
               </div>
 
-              <ArrowRight size={14} sm:size={16} className="text-[#12142B] shrink-0 ml-2" />
+              <ArrowRight size={14} className="text-[#12142B] shrink-0 ml-2" />
             </Link>
 
             <Link
@@ -215,7 +215,7 @@ function Dashboard() {
             >
               <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 flex-1">
                 <div className="w-[32px] h-[32px] sm:w-[38px] sm:h-[38px] rounded-[8px] sm:rounded-[10px] bg-[#EEF0FE] text-[#5B5FEF] flex items-center justify-center shrink-0">
-                  <ImageIcon size={15} sm:size={17} />
+                  <ImageIcon size={15} />
                 </div>
                 <div className="min-w-0 flex-1">
                   <h3 className="font-semibold text-[13px] sm:text-[14px] text-[#12142B] truncate">
@@ -227,7 +227,7 @@ function Dashboard() {
                 </div>
               </div>
 
-              <ArrowRight size={14} sm:size={16} className="text-[#12142B] shrink-0 ml-2" />
+              <ArrowRight size={14} className="text-[#12142B] shrink-0 ml-2" />
             </Link>
           </div>
         </div>
