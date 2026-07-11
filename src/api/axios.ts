@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/",
+  baseURL: "https://task-annotation-backend.onrender.com/api/",
 });
 
 // Add access token to every request
@@ -22,7 +22,6 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    // If access token expired
     if (
       error.response?.status === 401 &&
       !originalRequest._retry
@@ -32,13 +31,13 @@ api.interceptors.response.use(
       const refresh = localStorage.getItem("refresh");
 
       if (!refresh) {
-        window.location.href = "/";
+        window.location.href = "/login";
         return Promise.reject(error);
       }
 
       try {
         const response = await axios.post(
-          "http://127.0.0.1:8000/api/token/refresh/",
+          "https://task-annotation-backend.onrender.com/api/token/refresh/",
           {
             refresh,
           }
@@ -48,15 +47,14 @@ api.interceptors.response.use(
 
         localStorage.setItem("access", newAccess);
 
-        originalRequest.headers.Authorization =
-          `Bearer ${newAccess}`;
+        originalRequest.headers.Authorization = `Bearer ${newAccess}`;
 
         return api(originalRequest);
       } catch (err) {
         localStorage.removeItem("access");
         localStorage.removeItem("refresh");
 
-        window.location.href = "/";
+        window.location.href = "/login";
 
         return Promise.reject(err);
       }
