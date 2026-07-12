@@ -1,12 +1,4 @@
-/**
- * Font-link requirement (add once to index.html):
- * <link rel="preconnect" href="https://fonts.googleapis.com">
- * <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
- *
- * No logic changed: loadImages, handleUpload (FormData construction, uploading
- * state, currentIndex reset to newest image, input reset), useEffect on mount,
- * and the images.length > 0 conditional rendering are all identical.
- */
+
 
 import AnnotationCanvas from "../components/AnnotationCanvas";
 import { useEffect, useState } from "react";

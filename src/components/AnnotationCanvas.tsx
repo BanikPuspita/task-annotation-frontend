@@ -1,18 +1,3 @@
-/**
- * Font-link requirement (add once to index.html):
- * <link rel="preconnect" href="https://fonts.googleapis.com">
- * <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
- *
- * No logic changed: image loading, loadAnnotations, updateStageSize +
- * resize listener, handleClick/handleDoubleClick point collection,
- * resetPolygon, savePolygon, removeAnnotation/confirmDelete, and the
- * scaling math for points/polygons are all identical to your original.
- *
- * Visual-only changes: the Konva shape stroke/fill colors were swapped from
- * blue/green/red to the app's accent/teal/coral palette (still just color
- * constants — selection state, click handlers, and point math untouched),
- * and the Stage container now sits in a dark panel to match the mockup.
- */
 
 import { Stage, Layer, Line, Circle, Image as KonvaImage } from "react-konva";
 import { useEffect, useState, useRef } from "react";
@@ -33,6 +18,10 @@ interface Props {
 }
 
 function AnnotationCanvas({ imageUrl, imageId }: Props) {
+
+  console.log("imageUrl =", imageUrl);
+  console.log("imageId =", imageId);
+
   const [image, setImage] = useState<HTMLImageElement | null>(null);
 
   const [points, setPoints] = useState<number[]>([]);
@@ -76,17 +65,32 @@ function AnnotationCanvas({ imageUrl, imageId }: Props) {
   };
 
   useEffect(() => {
-    const img = new window.Image();
-    img.src = imageUrl;
+  console.log("Image URL:", imageUrl);
 
-    img.onload = () => setImage(img);
+  const img = new window.Image();
 
-    loadAnnotations();
+  img.crossOrigin = "anonymous";
 
-    setPoints([]);
-    setFinished(false);
-    setSelectedAnnotation(null);
-  }, [imageUrl, imageId]);
+  img.src = imageUrl;
+
+  img.onload = () => {
+    console.log("Image Loaded!");
+    console.log(img.width, img.height);
+
+    setImage(img);
+  };
+
+  img.onerror = (e) => {
+    console.log("IMAGE FAILED");
+    console.log(e);
+  };
+
+  loadAnnotations();
+
+  setPoints([]);
+  setFinished(false);
+  setSelectedAnnotation(null);
+}, [imageUrl, imageId]);
 
   useEffect(() => {
     updateStageSize();
