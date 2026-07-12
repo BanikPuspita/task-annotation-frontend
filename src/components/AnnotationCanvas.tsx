@@ -65,25 +65,22 @@ function AnnotationCanvas({ imageUrl, imageId }: Props) {
   };
 
   useEffect(() => {
-  console.log("Image URL:", imageUrl);
+  console.log("Loading image:", imageUrl);
 
   const img = new window.Image();
 
   img.crossOrigin = "anonymous";
 
-  img.src = imageUrl;
-
   img.onload = () => {
-    console.log("Image Loaded!");
-    console.log(img.width, img.height);
-
+    console.log("Image loaded", img.width, img.height);
     setImage(img);
   };
 
   img.onerror = (e) => {
-    console.log("IMAGE FAILED");
-    console.log(e);
+    console.log("Image failed", e);
   };
+
+  img.src = imageUrl;
 
   loadAnnotations();
 
@@ -92,6 +89,7 @@ function AnnotationCanvas({ imageUrl, imageId }: Props) {
   setSelectedAnnotation(null);
 }, [imageUrl, imageId]);
 
+ 
   useEffect(() => {
     updateStageSize();
 

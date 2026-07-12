@@ -18,16 +18,20 @@ function Annotation() {
   const [uploading, setUploading] = useState(false);
 
   const loadImages = async () => {
-    try {
-      const data = await getImages();
-      setImages(data);
-      return data;
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to load images.");
-      return [];
-    }
-  };
+  try {
+    const data = await getImages();
+
+    console.log(data);
+
+    setImages(data);
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    toast.error("Failed to load images.");
+    return [];
+  }
+};
 
   useEffect(() => {
     loadImages();
