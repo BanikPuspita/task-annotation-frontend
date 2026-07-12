@@ -10,7 +10,7 @@ A React + TypeScript web app that combines **task management** (Kanban board) an
 |----------|------|
 | **Hosted App (Vercel)** | https://task-annotation-frontend-gilt.vercel.app |
 | **GitHub Repository** | https://github.com/BanikPuspita/task-annotation-frontend |
-| **Backend API (Render)** | https://task-annotation-backend.onrender.com/api |
+| **Backend (Render)** | https://task-annotation-backend.onrender.com |
 | **Backend Repo** | https://github.com/BanikPuspita/task-annotation-backend |
 
 ### Demo Login Credentials
