@@ -1,15 +1,4 @@
-/**
- * Same font-link requirement as the other files — make sure this is in index.html once:
- * <link rel="preconnect" href="https://fonts.googleapis.com">
- * <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
- *
- * No logic/props changed — same Props interface (title, value, color, icon),
- * same destructuring, same component signature and export.
- *
- * The only new bit: `topBorderClass` derives the accent border color from the
- * existing `color` prop via string replace (e.g. "bg-[#5B5FEF]" -> "border-t-[#5B5FEF]"),
- * so Dashboard.tsx doesn't need any further changes.
- */
+
 
 import type { LucideIcon } from "lucide-react";
 

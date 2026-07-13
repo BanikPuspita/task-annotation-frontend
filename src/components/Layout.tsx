@@ -1,13 +1,3 @@
-/**
- * Add this to the <head> of your index.html if not already added for Login.tsx:
- *
- * <link rel="preconnect" href="https://fonts.googleapis.com">
- * <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
- *
- * No logic was changed — routing (Link/Outlet), useLocation active-path detection,
- * logout (localStorage.clear + navigate), and the username fallback are identical
- * to your original. Only JSX structure and Tailwind classes were restyled.
- */
 
 import { useState } from "react";
 import {

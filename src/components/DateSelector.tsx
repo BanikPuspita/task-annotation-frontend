@@ -1,10 +1,3 @@
-/**
- * Font-link requirement (add once to index.html):
- * <link rel="preconnect" href="https://fonts.googleapis.com">
- * <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
- *
- * No logic changed: same Props interface, same onDateChange(e.target.value) call.
- */
 
 import { Calendar } from "lucide-react";
 
